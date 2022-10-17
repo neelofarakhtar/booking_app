@@ -1,0 +1,14 @@
+<p>Create a new post </p>
+
+  <%= form_for(@movie) do |f| %>
+
+      <div class="form-group">
+      	<p>Add movie name</p>
+        <%= f.text_field :name, class:"form-control" %><br />
+      </div>
+      
+      <div>
+        <%= f.submit 'New Movie', class:"btn btn-secondary col-md-3"%>
+      </div>
+  <% end %>
+</div>

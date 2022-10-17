@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h3 class="display-3">
+    <%= @movie.name %>
+  </h3>
+  <div class="row justify-content-md-center">
+    <% @movie.theatres.each do |theatre| %>
+    <div class="col-sm-12 mb-1">
+      <h5>
+        <%= theatre.name %>
+      </h5>
+    </div>
+    <% theatre.screenings.where(movie_id: @movie.id).each do |screening|%>
+    <div class="col-sm-4 mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= screening.start_time %>
+            <%= screening.end_time %>
+          </h5>
+          <p>
+            Price:
+            <%= number_to_currency(screening.price, unit: "Rs ", precision: 0, delimiter: ".") %>
+            <%= " - " %>
+            
+            <%= screening.availability_formatted %>
+          </p>
+          <%= link_to "Book", book_path(screening), method: :post, class: 'btn btn-primary' if current_user %>
+        </div>
+      </div>
+    </div>
+  <% end %> 
+  <% end %>
+</div>
+</div>
+
+<%= link_to 'Back', root_path %>

@@ -1,0 +1,19 @@
+<div class="row justify-content-md-center">
+  <div class="col-sm-4">
+    <% if @movies %>
+    <ul class="list-group list-group-flush">
+      <% @movies.each do |movie| %>
+      <li class="list-group-item text-center">
+        <h4 class="text-right">
+          <%= movie.name %>
+
+        </h4>
+         <%= link_to "Show details", movie_path(movie), method: :get%>
+      </li>
+    <% end %></ul>
+<% else
+ %>
+<p>No movies yet.</p>
+<% end %></div>
+</div>
+<%= link_to 'Back', root_path %>
